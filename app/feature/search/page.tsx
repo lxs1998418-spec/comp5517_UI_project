@@ -56,7 +56,7 @@ export default function FeatureSearch() {
       case 'active': return 'bg-green-100 text-green-800';
       case 'graduated': return 'bg-blue-100 text-blue-800';
       case 'suspended': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      default: return 'bg-gray-100 text-black';
     }
   };
 
@@ -64,7 +64,7 @@ export default function FeatureSearch() {
     if (grade.includes('A')) return 'bg-yellow-100 text-yellow-800';
     if (grade.includes('B')) return 'bg-blue-100 text-blue-800';
     if (grade.includes('C')) return 'bg-orange-100 text-orange-800';
-    return 'bg-gray-100 text-gray-800';
+    return 'bg-gray-100 text-black';
   };
 
   return (
@@ -85,7 +85,7 @@ export default function FeatureSearch() {
               />
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-sm text-gray-600">排序:</label>
+              <label className="text-sm text-black">排序:</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
@@ -104,7 +104,7 @@ export default function FeatureSearch() {
               </button>
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-sm text-gray-600">视图密度:</label>
+              <label className="text-sm text-black">视图密度:</label>
               <select
                 value={viewDensity}
                 onChange={(e) => setViewDensity(e.target.value as any)}
@@ -125,7 +125,7 @@ export default function FeatureSearch() {
               <h2 className="font-semibold mb-3 text-lg">筛选条件</h2>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">专业分类</label>
+                  <label className="block text-sm font-medium text-black mb-1">专业分类</label>
                   <select
                     value={selectedMajor}
                     onChange={(e) => setSelectedMajor(e.target.value)}
@@ -140,7 +140,7 @@ export default function FeatureSearch() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">成绩等级</label>
+                  <label className="block text-sm font-medium text-black mb-1">成绩等级</label>
                   <select
                     value={selectedGrade}
                     onChange={(e) => setSelectedGrade(e.target.value)}
@@ -155,7 +155,7 @@ export default function FeatureSearch() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">学籍状态</label>
+                  <label className="block text-sm font-medium text-black mb-1">学籍状态</label>
                   <select
                     value={selectedStatus}
                     onChange={(e) => setSelectedStatus(e.target.value)}
@@ -170,7 +170,7 @@ export default function FeatureSearch() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">入学年份</label>
+                  <label className="block text-sm font-medium text-black mb-1">入学年份</label>
                   <select
                     value={selectedEnrollmentYear}
                     onChange={(e) => setSelectedEnrollmentYear(e.target.value)}
@@ -192,22 +192,22 @@ export default function FeatureSearch() {
           <div className="flex-1">
             <div className="bg-white rounded-lg shadow overflow-hidden">
               <div className="p-4 border-b">
-                <span className="text-gray-600">
-                  共找到 <strong className="text-gray-900">{filteredAndSortedStudents.length}</strong> 条记录
+                <span className="text-black">
+                  共找到 <strong className="text-black">{filteredAndSortedStudents.length}</strong> 条记录
                 </span>
               </div>
               <div className={`overflow-x-auto ${viewDensity === 'compact' ? 'p-2' : viewDensity === 'comfortable' ? 'p-4' : 'p-6'}`}>
                 <table className="w-full">
                   <thead>
                     <tr className="border-b">
-                      <th className="text-left py-2 px-3 font-semibold text-gray-700">姓名</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-700">学号</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-700">专业</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-700">成绩</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-700">GPA</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-700">状态</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-700">入学年份</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-700">操作</th>
+                      <th className="text-left py-2 px-3 font-semibold text-black">姓名</th>
+                      <th className="text-left py-2 px-3 font-semibold text-black">学号</th>
+                      <th className="text-left py-2 px-3 font-semibold text-black">专业</th>
+                      <th className="text-left py-2 px-3 font-semibold text-black">成绩</th>
+                      <th className="text-left py-2 px-3 font-semibold text-black">GPA</th>
+                      <th className="text-left py-2 px-3 font-semibold text-black">状态</th>
+                      <th className="text-left py-2 px-3 font-semibold text-black">入学年份</th>
+                      <th className="text-left py-2 px-3 font-semibold text-black">操作</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -221,10 +221,10 @@ export default function FeatureSearch() {
                           router.push(`/feature/detail/${student.id}`);
                         }}
                       >
-                        <td className={`py-2 px-3 ${viewDensity === 'spacious' ? 'py-3' : ''}`}>
+                        <td className={`py-2 px-3 text-black ${viewDensity === 'spacious' ? 'py-3' : ''}`}>
                           {student.name}
                         </td>
-                        <td className={`py-2 px-3 ${viewDensity === 'spacious' ? 'py-3' : ''}`}>
+                        <td className={`py-2 px-3 text-black ${viewDensity === 'spacious' ? 'py-3' : ''}`}>
                           {student.studentId}
                         </td>
                         <td className={`py-2 px-3 ${viewDensity === 'spacious' ? 'py-3' : ''}`}>
@@ -237,7 +237,7 @@ export default function FeatureSearch() {
                             {student.grade}
                           </span>
                         </td>
-                        <td className={`py-2 px-3 ${viewDensity === 'spacious' ? 'py-3' : ''}`}>
+                        <td className={`py-2 px-3 text-black ${viewDensity === 'spacious' ? 'py-3' : ''}`}>
                           {student.gpa}
                         </td>
                         <td className={`py-2 px-3 ${viewDensity === 'spacious' ? 'py-3' : ''}`}>
@@ -245,7 +245,7 @@ export default function FeatureSearch() {
                             {student.status === 'active' ? '在读' : student.status === 'graduated' ? '已毕业' : '已停学'}
                           </span>
                         </td>
-                        <td className={`py-2 px-3 ${viewDensity === 'spacious' ? 'py-3' : ''}`}>
+                        <td className={`py-2 px-3 text-black ${viewDensity === 'spacious' ? 'py-3' : ''}`}>
                           {student.enrollmentYear}
                         </td>
                         <td className={`py-2 px-3 ${viewDensity === 'spacious' ? 'py-3' : ''}`}>

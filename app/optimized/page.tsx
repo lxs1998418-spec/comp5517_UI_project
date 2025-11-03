@@ -16,8 +16,8 @@ export default function OptimizedWelcome() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">欢迎</h1>
-        <p className="text-gray-600 mb-8">
+        <h1 className="text-3xl font-bold text-black mb-4">欢迎</h1>
+        <p className="text-black mb-8">
           欢迎参与本次实验。请按照提示完成一系列任务。
         </p>
         <button

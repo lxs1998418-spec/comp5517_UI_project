@@ -48,12 +48,12 @@ export default function FeatureConfirm() {
 
           <div className="mb-6 pb-6 border-b">
             <h1 className="text-3xl font-bold mb-4">提交完成</h1>
-            <p className="text-gray-600 mb-4">
+            <p className="text-black mb-4">
               您的表单数据已成功提交。以下是您的确认信息：
             </p>
             
             <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="text-sm text-gray-600 mb-2">确认码</p>
+              <p className="text-sm text-black mb-2">确认码</p>
               <div className="flex items-center gap-2">
                 <code className="text-xl font-mono bg-white px-4 py-2 rounded border">
                   {confirmationCode}
@@ -70,7 +70,7 @@ export default function FeatureConfirm() {
 
           <div className="mb-6 pb-6 border-b">
             <h3 className="font-semibold mb-3">后续操作建议</h3>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul className="space-y-2 text-sm text-black">
               <li className="flex items-start">
                 <span className="mr-2">•</span>
                 <span>请保存您的确认码，以便后续查询使用</span>

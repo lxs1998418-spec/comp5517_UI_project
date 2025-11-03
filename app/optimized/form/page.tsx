@@ -159,7 +159,7 @@ export default function OptimizedForm() {
               </div>
             ))}
           </div>
-          <div className="flex justify-between text-sm text-gray-600">
+          <div className="flex justify-between text-sm text-black">
             <span>基础字段</span>
             <span>学术信息</span>
             <span>联系确认</span>
@@ -183,7 +183,7 @@ export default function OptimizedForm() {
                 {errors.name && (
                   <p className="text-red-500 text-sm mt-1">{errors.name}</p>
                 )}
-                <p className="text-xs text-gray-500 mt-1">请输入学生姓名</p>
+                <p className="text-xs text-black mt-1">请输入学生姓名</p>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1">学号 *</label>
@@ -266,7 +266,7 @@ export default function OptimizedForm() {
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">{errors.email}</p>
                 )}
-                <p className="text-xs text-gray-500 mt-1">请输入有效的邮箱地址</p>
+                <p className="text-xs text-black mt-1">请输入有效的邮箱地址</p>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1">电话 *</label>
@@ -281,7 +281,7 @@ export default function OptimizedForm() {
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
                 )}
-                <p className="text-xs text-gray-500 mt-1">请输入11位手机号码</p>
+                <p className="text-xs text-black mt-1">请输入11位手机号码</p>
               </div>
             </div>
           )}

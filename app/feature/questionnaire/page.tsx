@@ -46,8 +46,8 @@ export default function FeatureQuestionnaire() {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">感谢参与</h1>
-          <p className="text-gray-600 mb-6">
+          <h1 className="text-2xl font-bold text-black mb-4">感谢参与</h1>
+          <p className="text-black mb-6">
             您的问卷已成功提交。感谢您参与本次实验！
           </p>
           <button

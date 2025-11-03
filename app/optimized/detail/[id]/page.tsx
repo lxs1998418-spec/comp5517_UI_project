@@ -40,58 +40,58 @@ export default function OptimizedDetail() {
 
           {/* 基本信息 */}
           <section className="mb-6 pb-6 border-b">
-            <h2 className="text-xl font-semibold mb-4 text-gray-800">基本信息</h2>
+            <h2 className="text-xl font-semibold mb-4 text-black">基本信息</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <span className="text-gray-600">学号:</span>
-                <span className="ml-2 font-medium">{student.studentId}</span>
+                <span className="text-black">学号:</span>
+                <span className="ml-2 font-medium text-black">{student.studentId}</span>
               </div>
               <div>
-                <span className="text-gray-600">专业:</span>
-                <span className="ml-2 font-medium">{student.major}</span>
+                <span className="text-black">专业:</span>
+                <span className="ml-2 font-medium text-black">{student.major}</span>
               </div>
               <div>
-                <span className="text-gray-600">成绩:</span>
-                <span className="ml-2 font-medium">{student.grade}</span>
+                <span className="text-black">成绩:</span>
+                <span className="ml-2 font-medium text-black">{student.grade}</span>
               </div>
               <div>
-                <span className="text-gray-600">入学年份:</span>
-                <span className="ml-2 font-medium">{student.enrollmentYear}</span>
+                <span className="text-black">入学年份:</span>
+                <span className="ml-2 font-medium text-black">{student.enrollmentYear}</span>
               </div>
             </div>
           </section>
 
           {/* 学籍/成绩信息 */}
           <section className="mb-6 pb-6 border-b">
-            <h2 className="text-xl font-semibold mb-4 text-gray-800">学籍与成绩</h2>
+            <h2 className="text-xl font-semibold mb-4 text-black">学籍与成绩</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <span className="text-gray-600">GPA:</span>
-                <span className="ml-2 font-medium">{student.gpa}</span>
+                <span className="text-black">GPA:</span>
+                <span className="ml-2 font-medium text-black">{student.gpa}</span>
               </div>
               <div>
-                <span className="text-gray-600">状态:</span>
-                <span className="ml-2 font-medium">{student.status}</span>
+                <span className="text-black">状态:</span>
+                <span className="ml-2 font-medium text-black">{student.status}</span>
               </div>
             </div>
           </section>
 
           {/* 联系方式 */}
           <section>
-            <h2 className="text-xl font-semibold mb-4 text-gray-800">联系方式</h2>
+            <h2 className="text-xl font-semibold mb-4 text-black">联系方式</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <span className="text-gray-600">邮箱:</span>
-                <span className="ml-2 font-medium">{student.email}</span>
+                <span className="text-black">邮箱:</span>
+                <span className="ml-2 font-medium text-black">{student.email}</span>
               </div>
               <div>
-                <span className="text-gray-600">电话:</span>
-                <span className="ml-2 font-medium">{student.phone}</span>
+                <span className="text-black">电话:</span>
+                <span className="ml-2 font-medium text-black">{student.phone}</span>
               </div>
               {showMore && (
                 <div className="md:col-span-2">
-                  <span className="text-gray-600">地址:</span>
-                  <span className="ml-2 font-medium">{student.address}</span>
+                  <span className="text-black">地址:</span>
+                  <span className="ml-2 font-medium text-black">{student.address}</span>
                 </div>
               )}
             </div>

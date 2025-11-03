@@ -40,12 +40,12 @@ export default function OptimizedConfirm() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">提交成功</h1>
-          <p className="text-gray-600">您的数据已成功提交</p>
+          <h1 className="text-3xl font-bold text-black mb-2">提交成功</h1>
+          <p className="text-black">您的数据已成功提交</p>
         </div>
 
         <div className="mb-6 p-4 bg-green-50 rounded-lg">
-          <p className="text-sm text-gray-600 mb-2">确认码</p>
+          <p className="text-sm text-black mb-2">确认码</p>
           <div className="flex items-center justify-center gap-2">
             <code className="text-2xl font-bold text-green-700 font-mono">
               {confirmationCode}
@@ -68,7 +68,7 @@ export default function OptimizedConfirm() {
           </button>
           <button
             onClick={() => router.push('/optimized/search')}
-            className="w-full py-2 text-gray-600 hover:text-gray-800"
+            className="w-full py-2 text-black hover:text-black"
           >
             返回目录
           </button>

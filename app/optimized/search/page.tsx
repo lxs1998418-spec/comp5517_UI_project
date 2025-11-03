@@ -55,7 +55,7 @@ export default function OptimizedSearch() {
               <h2 className="font-semibold mb-3">基本筛选</h2>
               <div className="space-y-3">
                 <div>
-                  <label className="block text-sm text-gray-600 mb-1">专业</label>
+                  <label className="block text-sm text-black mb-1">专业</label>
                   <select
                     value={selectedMajor}
                     onChange={(e) => setSelectedMajor(e.target.value)}
@@ -70,7 +70,7 @@ export default function OptimizedSearch() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-600 mb-1">成绩</label>
+                  <label className="block text-sm text-black mb-1">成绩</label>
                   <select
                     value={selectedGrade}
                     onChange={(e) => setSelectedGrade(e.target.value)}
@@ -98,7 +98,7 @@ export default function OptimizedSearch() {
           <div className="flex-1">
             {/* 结果统计和筛选标签 */}
             <div className="mb-4 flex flex-wrap items-center gap-2">
-              <span className="text-gray-600">
+              <span className="text-black">
                 找到 <strong>{filteredStudents.length}</strong> 条结果
               </span>
               {activeFilters.map((filter, idx) => (
@@ -132,11 +132,11 @@ export default function OptimizedSearch() {
                   <div className="flex justify-between items-start">
                     <div>
                       <h3 className="font-semibold text-lg">{student.name}</h3>
-                      <p className="text-gray-600 text-sm mt-1">
+                      <p className="text-black text-sm mt-1">
                         学号: {student.studentId} | 专业: {student.major} | 成绩: {student.grade}
                       </p>
                     </div>
-                    <span className="text-xs text-gray-400">查看详情 →</span>
+                    <span className="text-xs text-black">查看详情 →</span>
                   </div>
                 </div>
               ))}

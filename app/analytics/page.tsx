@@ -81,7 +81,7 @@ export default function Analytics() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">数据分析页面</h1>
-          <p className="text-gray-600">实验数据统计与分析</p>
+          <p className="text-black">实验数据统计与分析</p>
           <button
             onClick={fetchResults}
             className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
@@ -106,7 +106,7 @@ export default function Analytics() {
                 <p><strong>平均挫败感:</strong> {optimizedStats.avgFrustration.toFixed(1)}</p>
               </div>
             ) : (
-              <p className="text-gray-500">暂无数据</p>
+              <p className="text-black">暂无数据</p>
             )}
           </div>
 
@@ -124,7 +124,7 @@ export default function Analytics() {
                 <p><strong>平均挫败感:</strong> {featureStats.avgFrustration.toFixed(1)}</p>
               </div>
             ) : (
-              <p className="text-gray-500">暂无数据</p>
+              <p className="text-black">暂无数据</p>
             )}
           </div>
         </div>
@@ -145,58 +145,58 @@ export default function Analytics() {
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="border p-3 font-medium">平均完成时间（分钟）</td>
-                    <td className="border p-3">{optimizedStats.avgDuration.toFixed(2)}</td>
-                    <td className="border p-3">{featureStats.avgDuration.toFixed(2)}</td>
-                    <td className="border p-3">
+                    <td className="border p-3 font-medium text-black">平均完成时间（分钟）</td>
+                    <td className="border p-3 text-black">{optimizedStats.avgDuration.toFixed(2)}</td>
+                    <td className="border p-3 text-black">{featureStats.avgDuration.toFixed(2)}</td>
+                    <td className="border p-3 text-black">
                       {((optimizedStats.avgDuration - featureStats.avgDuration) / featureStats.avgDuration * 100).toFixed(1)}%
                     </td>
                   </tr>
                   <tr>
-                    <td className="border p-3 font-medium">心理需求</td>
-                    <td className="border p-3">{optimizedStats.avgMentalDemand.toFixed(1)}</td>
-                    <td className="border p-3">{featureStats.avgMentalDemand.toFixed(1)}</td>
-                    <td className="border p-3">
+                    <td className="border p-3 font-medium text-black">心理需求</td>
+                    <td className="border p-3 text-black">{optimizedStats.avgMentalDemand.toFixed(1)}</td>
+                    <td className="border p-3 text-black">{featureStats.avgMentalDemand.toFixed(1)}</td>
+                    <td className="border p-3 text-black">
                       {(optimizedStats.avgMentalDemand - featureStats.avgMentalDemand).toFixed(1)}
                     </td>
                   </tr>
                   <tr>
-                    <td className="border p-3 font-medium">体力需求</td>
-                    <td className="border p-3">{optimizedStats.avgPhysicalDemand.toFixed(1)}</td>
-                    <td className="border p-3">{featureStats.avgPhysicalDemand.toFixed(1)}</td>
-                    <td className="border p-3">
+                    <td className="border p-3 font-medium text-black">体力需求</td>
+                    <td className="border p-3 text-black">{optimizedStats.avgPhysicalDemand.toFixed(1)}</td>
+                    <td className="border p-3 text-black">{featureStats.avgPhysicalDemand.toFixed(1)}</td>
+                    <td className="border p-3 text-black">
                       {(optimizedStats.avgPhysicalDemand - featureStats.avgPhysicalDemand).toFixed(1)}
                     </td>
                   </tr>
                   <tr>
-                    <td className="border p-3 font-medium">时间压力</td>
-                    <td className="border p-3">{optimizedStats.avgTemporalDemand.toFixed(1)}</td>
-                    <td className="border p-3">{featureStats.avgTemporalDemand.toFixed(1)}</td>
-                    <td className="border p-3">
+                    <td className="border p-3 font-medium text-black">时间压力</td>
+                    <td className="border p-3 text-black">{optimizedStats.avgTemporalDemand.toFixed(1)}</td>
+                    <td className="border p-3 text-black">{featureStats.avgTemporalDemand.toFixed(1)}</td>
+                    <td className="border p-3 text-black">
                       {(optimizedStats.avgTemporalDemand - featureStats.avgTemporalDemand).toFixed(1)}
                     </td>
                   </tr>
                   <tr>
-                    <td className="border p-3 font-medium">自身表现</td>
-                    <td className="border p-3">{optimizedStats.avgPerformance.toFixed(1)}</td>
-                    <td className="border p-3">{featureStats.avgPerformance.toFixed(1)}</td>
-                    <td className="border p-3">
+                    <td className="border p-3 font-medium text-black">自身表现</td>
+                    <td className="border p-3 text-black">{optimizedStats.avgPerformance.toFixed(1)}</td>
+                    <td className="border p-3 text-black">{featureStats.avgPerformance.toFixed(1)}</td>
+                    <td className="border p-3 text-black">
                       {(optimizedStats.avgPerformance - featureStats.avgPerformance).toFixed(1)}
                     </td>
                   </tr>
                   <tr>
-                    <td className="border p-3 font-medium">努力程度</td>
-                    <td className="border p-3">{optimizedStats.avgEffort.toFixed(1)}</td>
-                    <td className="border p-3">{featureStats.avgEffort.toFixed(1)}</td>
-                    <td className="border p-3">
+                    <td className="border p-3 font-medium text-black">努力程度</td>
+                    <td className="border p-3 text-black">{optimizedStats.avgEffort.toFixed(1)}</td>
+                    <td className="border p-3 text-black">{featureStats.avgEffort.toFixed(1)}</td>
+                    <td className="border p-3 text-black">
                       {(optimizedStats.avgEffort - featureStats.avgEffort).toFixed(1)}
                     </td>
                   </tr>
                   <tr>
-                    <td className="border p-3 font-medium">挫败感</td>
-                    <td className="border p-3">{optimizedStats.avgFrustration.toFixed(1)}</td>
-                    <td className="border p-3">{featureStats.avgFrustration.toFixed(1)}</td>
-                    <td className="border p-3">
+                    <td className="border p-3 font-medium text-black">挫败感</td>
+                    <td className="border p-3 text-black">{optimizedStats.avgFrustration.toFixed(1)}</td>
+                    <td className="border p-3 text-black">{featureStats.avgFrustration.toFixed(1)}</td>
+                    <td className="border p-3 text-black">
                       {(optimizedStats.avgFrustration - featureStats.avgFrustration).toFixed(1)}
                     </td>
                   </tr>
@@ -238,24 +238,24 @@ export default function Analytics() {
                         {result.version === 'optimized' ? '优化版' : '对照版'}
                       </span>
                     </td>
-                    <td className="border p-2">
+                    <td className="border p-2 text-black">
                       {new Date(result.startTime).toLocaleString('zh-CN')}
                     </td>
-                    <td className="border p-2">
+                    <td className="border p-2 text-black">
                       {new Date(result.endTime).toLocaleString('zh-CN')}
                     </td>
-                    <td className="border p-2">
+                    <td className="border p-2 text-black">
                       {(result.duration / 1000 / 60).toFixed(2)}
                     </td>
-                    <td className="border p-2 font-mono text-xs">
+                    <td className="border p-2 font-mono text-xs text-black">
                       {result.confirmationCode}
                     </td>
-                    <td className="border p-2">{result.nasatlx.mentalDemand}</td>
-                    <td className="border p-2">{result.nasatlx.physicalDemand}</td>
-                    <td className="border p-2">{result.nasatlx.temporalDemand}</td>
-                    <td className="border p-2">{result.nasatlx.performance}</td>
-                    <td className="border p-2">{result.nasatlx.effort}</td>
-                    <td className="border p-2">{result.nasatlx.frustration}</td>
+                    <td className="border p-2 text-black">{result.nasatlx.mentalDemand}</td>
+                    <td className="border p-2 text-black">{result.nasatlx.physicalDemand}</td>
+                    <td className="border p-2 text-black">{result.nasatlx.temporalDemand}</td>
+                    <td className="border p-2 text-black">{result.nasatlx.performance}</td>
+                    <td className="border p-2 text-black">{result.nasatlx.effort}</td>
+                    <td className="border p-2 text-black">{result.nasatlx.frustration}</td>
                   </tr>
                 ))}
               </tbody>

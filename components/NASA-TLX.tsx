@@ -73,10 +73,10 @@ export default function NASA_TLX({ onSubmit }: NASA_TLXProps) {
     return (
       <div className="mb-8 p-6 bg-white rounded-lg shadow">
         <label className="block text-lg font-semibold mb-2 text-black">{label}</label>
-        <p className="text-gray-600 mb-4">{question}</p>
+        <p className="text-black mb-4">{question}</p>
         
         {/* 锚点标签 */}
-        <div className="flex justify-between text-sm text-gray-600 mb-4">
+        <div className="flex justify-between text-sm text-black mb-4">
           <span>{anchors.left}</span>
           <span>{anchors.right}</span>
         </div>
@@ -100,7 +100,7 @@ export default function NASA_TLX({ onSubmit }: NASA_TLXProps) {
                 >
                   ★
                 </button>
-                <span className={`text-xs ${value === starValue ? 'font-bold text-blue-600' : 'text-gray-500'}`}>
+                <span className={`text-xs ${value === starValue ? 'font-bold text-blue-600' : 'text-black'}`}>
                   {starLabels[starNum - 1]}
                 </span>
               </div>

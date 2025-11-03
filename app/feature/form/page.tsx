@@ -86,17 +86,17 @@ export default function FeatureForm() {
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h1 className="text-3xl font-bold mb-6">学生信息录入表单</h1>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             请填写以下所有字段。带*号的字段为必填项。高级选项默认可见。
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* 基本信息 */}
             <section className="border-b pb-6">
-              <h2 className="text-xl font-semibold mb-4 text-gray-800">基本信息部分</h2>
+              <h2 className="text-xl font-semibold mb-4 text-black">基本信息部分</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     学生姓名 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -109,10 +109,10 @@ export default function FeatureForm() {
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
                     placeholder="请输入学生姓名"
                   />
-                  <p className="text-xs text-gray-500 mt-1">此字段用于标识学生的唯一姓名信息</p>
+                  <p className="text-xs text-black mt-1">此字段用于标识学生的唯一姓名信息</p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     学生学号 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -125,17 +125,17 @@ export default function FeatureForm() {
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
                     placeholder="请输入学号"
                   />
-                  <p className="text-xs text-gray-500 mt-1">学号格式：数字或字母数字组合</p>
+                  <p className="text-xs text-black mt-1">学号格式：数字或字母数字组合</p>
                 </div>
               </div>
             </section>
 
             {/* 学术信息 */}
             <section className="border-b pb-6">
-              <h2 className="text-xl font-semibold mb-4 text-gray-800">学术成绩与学籍信息</h2>
+              <h2 className="text-xl font-semibold mb-4 text-black">学术成绩与学籍信息</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     专业名称 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -148,10 +148,10 @@ export default function FeatureForm() {
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
                     placeholder="例如：计算机科学"
                   />
-                  <p className="text-xs text-gray-500 mt-1">学生所属的专业或学科领域</p>
+                  <p className="text-xs text-black mt-1">学生所属的专业或学科领域</p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     成绩等级 <span className="text-red-500">*</span>
                   </label>
                   <select
@@ -174,7 +174,7 @@ export default function FeatureForm() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     入学年份 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -189,7 +189,7 @@ export default function FeatureForm() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     平均绩点 (GPA) <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -205,7 +205,7 @@ export default function FeatureForm() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     学籍状态
                   </label>
                   <select
@@ -226,10 +226,10 @@ export default function FeatureForm() {
 
             {/* 联系方式 */}
             <section className="border-b pb-6">
-              <h2 className="text-xl font-semibold mb-4 text-gray-800">联系方式信息</h2>
+              <h2 className="text-xl font-semibold mb-4 text-black">联系方式信息</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     电子邮箱地址 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -242,10 +242,10 @@ export default function FeatureForm() {
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
                     placeholder="example@email.com"
                   />
-                  <p className="text-xs text-gray-500 mt-1">请输入有效的电子邮箱地址格式</p>
+                  <p className="text-xs text-black mt-1">请输入有效的电子邮箱地址格式</p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     手机号码 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -258,10 +258,10 @@ export default function FeatureForm() {
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
                     placeholder="11位手机号码"
                   />
-                  <p className="text-xs text-gray-500 mt-1">请输入11位数字手机号码</p>
+                  <p className="text-xs text-black mt-1">请输入11位数字手机号码</p>
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     居住地址
                   </label>
                   <input
@@ -280,10 +280,10 @@ export default function FeatureForm() {
 
             {/* 高级选项 - 默认可见 */}
             <section>
-              <h2 className="text-xl font-semibold mb-4 text-gray-800">高级配置选项</h2>
+              <h2 className="text-xl font-semibold mb-4 text-black">高级配置选项</h2>
               <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-sm text-gray-600 mb-2">高级选项区域（默认可见）</p>
-                <p className="text-xs text-gray-500">
+                <p className="text-sm text-black mb-2">高级选项区域（默认可见）</p>
+                <p className="text-xs text-black">
                   此区域包含额外的配置选项和高级设置，可根据需要进行调整。
                 </p>
               </div>
