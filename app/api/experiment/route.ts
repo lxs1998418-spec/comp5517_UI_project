@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '@/lib/mongodb';
 import { ExperimentResult } from '@/types';
 import { v4 as uuidv4 } from 'uuid';
-import { Document } from 'mongodb';
+import { OptionalId, Document } from 'mongodb';
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
     const duration = end.getTime() - start.getTime();
     const confirmationCode = uuidv4().substring(0, 8).toUpperCase();
 
-    const result: ExperimentResult = {
+    const result: Omit<ExperimentResult, '_id'> = {
       version,
       startTime: start,
       endTime: end,
@@ -31,9 +31,7 @@ export async function POST(request: NextRequest) {
 
     const client = await clientPromise;
     const db = client.db('ui_experiment');
-    // Omit _id when inserting - MongoDB will auto-generate it
-    const { _id, ...resultWithoutId } = result;
-    await db.collection('results').insertOne(resultWithoutId as Document);
+    await db.collection('results').insertOne(result as OptionalId<Document>);
 
     return NextResponse.json({
       success: true,
