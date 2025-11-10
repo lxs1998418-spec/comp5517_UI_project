@@ -3,22 +3,63 @@
 import { useState, useEffect } from 'react';
 import { ExperimentResult } from '@/types';
 
+interface Stats {
+  count: number;
+  avgDuration: number;
+  avgMentalDemand: number;
+  avgPhysicalDemand: number;
+  avgTemporalDemand: number;
+  avgPerformance: number;
+  avgEffort: number;
+  avgFrustration: number;
+  minDuration: number;
+  maxDuration: number;
+  medianDuration: number;
+}
+
+interface Comparison {
+  metric: string;
+  optimized: number;
+  feature: number;
+  difference: number;
+  differencePercent: number;
+}
+
+interface AnalyticsData {
+  total: {
+    count: number;
+    stats: Stats | null;
+  };
+  optimized: {
+    count: number;
+    stats: Stats | null;
+    results: ExperimentResult[];
+  };
+  feature: {
+    count: number;
+    stats: Stats | null;
+    results: ExperimentResult[];
+  };
+  comparison: Comparison[];
+}
+
 export default function Analytics() {
-  const [results, setResults] = useState<ExperimentResult[]>([]);
+  const [analyticsData, setAnalyticsData] = useState<AnalyticsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetchResults();
+    fetchAnalytics();
   }, []);
 
-  const fetchResults = async () => {
+  const fetchAnalytics = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/results');
+      setError('');
+      const response = await fetch('/api/analytics');
       const data = await response.json();
       if (data.success) {
-        setResults(data.results || []);
+        setAnalyticsData(data.data);
       } else {
         setError('获取数据失败');
       }
@@ -30,31 +71,14 @@ export default function Analytics() {
     }
   };
 
-  const optimizedResults = results.filter((r) => r.version === 'optimized');
-  const featureResults = results.filter((r) => r.version === 'feature');
+  // 合并所有结果用于详细数据列表显示
+  const allResults: ExperimentResult[] = analyticsData
+    ? [...(analyticsData.optimized.results || []), ...(analyticsData.feature.results || [])]
+    : [];
 
-  const calculateAverage = (values: number[]) => {
-    if (values.length === 0) return 0;
-    return values.reduce((a, b) => a + b, 0) / values.length;
-  };
-
-  const calculateStats = (results: ExperimentResult[]) => {
-    if (results.length === 0) return null;
-
-    return {
-      count: results.length,
-      avgDuration: calculateAverage(results.map((r) => r.duration / 1000 / 60)), // 分钟
-      avgMentalDemand: calculateAverage(results.map((r) => r.nasatlx.mentalDemand)),
-      avgPhysicalDemand: calculateAverage(results.map((r) => r.nasatlx.physicalDemand)),
-      avgTemporalDemand: calculateAverage(results.map((r) => r.nasatlx.temporalDemand)),
-      avgPerformance: calculateAverage(results.map((r) => r.nasatlx.performance)),
-      avgEffort: calculateAverage(results.map((r) => r.nasatlx.effort)),
-      avgFrustration: calculateAverage(results.map((r) => r.nasatlx.frustration)),
-    };
-  };
-
-  const optimizedStats = calculateStats(optimizedResults);
-  const featureStats = calculateStats(featureResults);
+  const optimizedStats = analyticsData?.optimized.stats;
+  const featureStats = analyticsData?.feature.stats;
+  const comparison = analyticsData?.comparison || [];
 
   if (loading) {
     return (
@@ -83,7 +107,7 @@ export default function Analytics() {
           <h1 className="text-3xl font-bold mb-2">数据分析页面</h1>
           <p className="text-black">实验数据统计与分析</p>
           <button
-            onClick={fetchResults}
+            onClick={fetchAnalytics}
             className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
           >
             刷新数据
@@ -130,7 +154,7 @@ export default function Analytics() {
         </div>
 
         {/* 对比分析 */}
-        {optimizedStats && featureStats && (
+        {comparison.length > 0 && (
           <div className="bg-white rounded-lg shadow p-6 mb-8">
             <h2 className="text-xl font-semibold mb-4">对比分析</h2>
             <div className="overflow-x-auto">
@@ -144,62 +168,28 @@ export default function Analytics() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="border p-3 font-medium text-black">平均完成时间（分钟）</td>
-                    <td className="border p-3 text-black">{optimizedStats.avgDuration.toFixed(2)}</td>
-                    <td className="border p-3 text-black">{featureStats.avgDuration.toFixed(2)}</td>
-                    <td className="border p-3 text-black">
-                      {((optimizedStats.avgDuration - featureStats.avgDuration) / featureStats.avgDuration * 100).toFixed(1)}%
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-3 font-medium text-black">心理需求</td>
-                    <td className="border p-3 text-black">{optimizedStats.avgMentalDemand.toFixed(1)}</td>
-                    <td className="border p-3 text-black">{featureStats.avgMentalDemand.toFixed(1)}</td>
-                    <td className="border p-3 text-black">
-                      {(optimizedStats.avgMentalDemand - featureStats.avgMentalDemand).toFixed(1)}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-3 font-medium text-black">体力需求</td>
-                    <td className="border p-3 text-black">{optimizedStats.avgPhysicalDemand.toFixed(1)}</td>
-                    <td className="border p-3 text-black">{featureStats.avgPhysicalDemand.toFixed(1)}</td>
-                    <td className="border p-3 text-black">
-                      {(optimizedStats.avgPhysicalDemand - featureStats.avgPhysicalDemand).toFixed(1)}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-3 font-medium text-black">时间压力</td>
-                    <td className="border p-3 text-black">{optimizedStats.avgTemporalDemand.toFixed(1)}</td>
-                    <td className="border p-3 text-black">{featureStats.avgTemporalDemand.toFixed(1)}</td>
-                    <td className="border p-3 text-black">
-                      {(optimizedStats.avgTemporalDemand - featureStats.avgTemporalDemand).toFixed(1)}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-3 font-medium text-black">自身表现</td>
-                    <td className="border p-3 text-black">{optimizedStats.avgPerformance.toFixed(1)}</td>
-                    <td className="border p-3 text-black">{featureStats.avgPerformance.toFixed(1)}</td>
-                    <td className="border p-3 text-black">
-                      {(optimizedStats.avgPerformance - featureStats.avgPerformance).toFixed(1)}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-3 font-medium text-black">努力程度</td>
-                    <td className="border p-3 text-black">{optimizedStats.avgEffort.toFixed(1)}</td>
-                    <td className="border p-3 text-black">{featureStats.avgEffort.toFixed(1)}</td>
-                    <td className="border p-3 text-black">
-                      {(optimizedStats.avgEffort - featureStats.avgEffort).toFixed(1)}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-3 font-medium text-black">挫败感</td>
-                    <td className="border p-3 text-black">{optimizedStats.avgFrustration.toFixed(1)}</td>
-                    <td className="border p-3 text-black">{featureStats.avgFrustration.toFixed(1)}</td>
-                    <td className="border p-3 text-black">
-                      {(optimizedStats.avgFrustration - featureStats.avgFrustration).toFixed(1)}
-                    </td>
-                  </tr>
+                  {comparison.map((item, idx) => (
+                    <tr key={idx}>
+                      <td className="border p-3 font-medium text-black">{item.metric}</td>
+                      <td className="border p-3 text-black">
+                        {item.metric.includes('时间') 
+                          ? item.optimized.toFixed(2) 
+                          : item.optimized.toFixed(1)}
+                      </td>
+                      <td className="border p-3 text-black">
+                        {item.metric.includes('时间') 
+                          ? item.feature.toFixed(2) 
+                          : item.feature.toFixed(1)}
+                      </td>
+                      <td className="border p-3 text-black">
+                        {item.differencePercent !== 0
+                          ? `${item.differencePercent > 0 ? '+' : ''}${item.differencePercent.toFixed(1)}%`
+                          : item.metric.includes('时间')
+                          ? `${item.difference > 0 ? '+' : ''}${item.difference.toFixed(2)}`
+                          : `${item.difference > 0 ? '+' : ''}${item.difference.toFixed(1)}`}
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -227,37 +217,45 @@ export default function Analytics() {
                 </tr>
               </thead>
               <tbody>
-                {results.map((result, idx) => (
-                  <tr key={idx} className="hover:bg-gray-50">
-                    <td className="border p-2">
-                      <span className={`px-2 py-1 rounded text-xs ${
-                        result.version === 'optimized' 
-                          ? 'bg-blue-100 text-blue-800' 
-                          : 'bg-green-100 text-green-800'
-                      }`}>
-                        {result.version === 'optimized' ? '优化版' : '对照版'}
-                      </span>
+                {allResults.length > 0 ? (
+                  allResults.map((result, idx) => (
+                    <tr key={result._id || idx} className="hover:bg-gray-50">
+                      <td className="border p-2">
+                        <span className={`px-2 py-1 rounded text-xs ${
+                          result.version === 'optimized' 
+                            ? 'bg-blue-100 text-blue-800' 
+                            : 'bg-green-100 text-green-800'
+                        }`}>
+                          {result.version === 'optimized' ? '优化版' : '对照版'}
+                        </span>
+                      </td>
+                      <td className="border p-2 text-black">
+                        {new Date(result.startTime).toLocaleString('zh-CN')}
+                      </td>
+                      <td className="border p-2 text-black">
+                        {new Date(result.endTime).toLocaleString('zh-CN')}
+                      </td>
+                      <td className="border p-2 text-black">
+                        {(result.duration / 1000 / 60).toFixed(2)}
+                      </td>
+                      <td className="border p-2 font-mono text-xs text-black">
+                        {result.confirmationCode}
+                      </td>
+                      <td className="border p-2 text-black">{result.nasatlx.mentalDemand}</td>
+                      <td className="border p-2 text-black">{result.nasatlx.physicalDemand}</td>
+                      <td className="border p-2 text-black">{result.nasatlx.temporalDemand}</td>
+                      <td className="border p-2 text-black">{result.nasatlx.performance}</td>
+                      <td className="border p-2 text-black">{result.nasatlx.effort}</td>
+                      <td className="border p-2 text-black">{result.nasatlx.frustration}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={11} className="border p-4 text-center text-gray-500">
+                      暂无数据
                     </td>
-                    <td className="border p-2 text-black">
-                      {new Date(result.startTime).toLocaleString('zh-CN')}
-                    </td>
-                    <td className="border p-2 text-black">
-                      {new Date(result.endTime).toLocaleString('zh-CN')}
-                    </td>
-                    <td className="border p-2 text-black">
-                      {(result.duration / 1000 / 60).toFixed(2)}
-                    </td>
-                    <td className="border p-2 font-mono text-xs text-black">
-                      {result.confirmationCode}
-                    </td>
-                    <td className="border p-2 text-black">{result.nasatlx.mentalDemand}</td>
-                    <td className="border p-2 text-black">{result.nasatlx.physicalDemand}</td>
-                    <td className="border p-2 text-black">{result.nasatlx.temporalDemand}</td>
-                    <td className="border p-2 text-black">{result.nasatlx.performance}</td>
-                    <td className="border p-2 text-black">{result.nasatlx.effort}</td>
-                    <td className="border p-2 text-black">{result.nasatlx.frustration}</td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
           </div>
